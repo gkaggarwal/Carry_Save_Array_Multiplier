@@ -86,10 +86,10 @@ begin
 	                   P(I)<= S(I)(0);
 					  END Generate Loop_Product;
 					  
-	Carry_Merge_HA: HalfAdder port map(A=>C(K-1)(0),B=>S(K-1)(1),Sum=>P(4),Carry=>C1(0));
+	Carry_Merge_HA: HalfAdder port map(A=>C(K-1)(0),B=>S(K-1)(1),Sum=>P(K),Carry=>C1(0));
 		
 	Start: For J In 2 to K-1 Generate
-            CarryMergeFA: FullAdder port map(A=>C1(J-2),B=>S(K-1)(J),Cin=>C(K-1)(J-1),Sum=>P(J+3),Carry=>C1(J-1));
+            CarryMergeFA: FullAdder port map(A=>C1(J-2),B=>S(K-1)(J),Cin=>C(K-1)(J-1),Sum=>P(J+K-1),Carry=>C1(J-1));
 			 END Generate Start;
 			 P(2*K-1)<= C1(K-2);
 end Behavioral;
